@@ -1,8 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using SMS.BusinessLogicLayer.InfrastructureService;
+using SMS.DataAccessLayer.Data;
+using SMS.DataAccessLayer.InfrastructureDb;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IIUnitOfWorkDb,UnitOfWorkDb>();
+builder.Services.AddScoped<IUnitOfWorkService, UnitOfWorkService>();
+builder.Services.AddDbContext<ApplicationDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

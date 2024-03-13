@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.BusinessObjectLayer\SMS.BusinessObjectLayer.csproj" />
+    <ProjectReference Include="..\SMS.DataAccessLayer\SMS.DataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

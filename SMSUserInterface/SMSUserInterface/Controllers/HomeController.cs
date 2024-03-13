@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.BusinessLogicLayer.InfrastructureService;
+using SMS.BusinessObjectLayer.ViewModels;
 using SMSUserInterface.Models;
 using System.Diagnostics;
 
@@ -6,15 +8,34 @@ namespace SMSUserInterface.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWorkService _unitOfWorkService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWorkService unitOfWorkService)
         {
-            _logger = logger;
+            _unitOfWorkService = unitOfWorkService;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            ContactInfoViewcs ContactList = new ContactInfoViewcs();
+            ContactList.ContactsList = await _unitOfWorkService.ContactService.GetAllAsync();
+            return View(ContactList);
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult CreateAndUpdate()
         {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateAndUpdate(ContactInfoViewcs  model)
+        {
+            if(ModelState.IsValid)
+            {
+                await _unitOfWorkService.ContactService.CreateAsync(model.Contact);
+                return RedirectToAction("Index");
+            }
             return View();
         }
 

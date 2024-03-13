@@ -1,0 +1,31 @@
+﻿@model SMS.BusinessObjectLayer.ViewModels.ContactInfoViewcs
+@{
+    ViewData["Title"] = "CreateAndUpdate";
+}
+
+<h1>CreateAndUpdate</h1>
+
+<div class="container">
+    <form  asp-controller="Home" asp-action="CreateAndUpdate" method="post" role="form" class="php-email-form">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <input type="text" asp-for="@Model.Contact.Name" class="form-control" id="name" placeholder="Your Name" required>
+                <span asp-validation-for="@Model.Contact.Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" asp-for="@Model.Contact.Email" id="email" placeholder="Your Email" required>
+                <span asp-validation-for="@Model.Contact.Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <input type="text" class="form-control" asp-for="@Model.Contact.Subject" id="subject" placeholder="Subject" required>
+            <span asp-validation-for="@Model.Contact.Subject" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-3">
+            <textarea class="form-control" asp-for="@Model.Contact.Message" rows="5" placeholder="Message" required></textarea>
+            <span asp-validation-for="@Model.Contact.Message" class="text-danger"></span>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+    </form>
+
+</div>

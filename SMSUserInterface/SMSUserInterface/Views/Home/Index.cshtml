@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model SMS.BusinessObjectLayer.ViewModels.ContactInfoViewcs
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Index</h1>
+
+
+<div class="container">
+    <a class="btn btn-primary" asp-controller="Home" asp-action="CreateAndUpdate">Create Contact</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Creation Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.ContactsList)
+            {
+                <tr>
+                    <td>@contact.Name</td>
+                    <td>@contact.Email</td>
+                    <td>@contact.Subject</td>
+                    <td>@contact.Message</td>
+                    <td>@contact.CreationTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
