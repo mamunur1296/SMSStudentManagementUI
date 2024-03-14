@@ -23,9 +23,9 @@ namespace SMS.BusinessLogicLayer.InfrastructureService.Service
             return await _iunitOfWorkDb.ContactInfoDbRepo.GetAllAsync();
         }
 
-        public Task<ContactInfo> GetByIdAsync(int id)
+        public async Task<ContactInfo> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _iunitOfWorkDb.ContactInfoDbRepo.GetByIdAsync(x => x.Id == id);
         }
     }
 }
