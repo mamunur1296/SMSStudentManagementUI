@@ -3,7 +3,7 @@ using SMS.BusinessObjectLayer.Models;
 using SMS.DataAccessLayer.InfrastructureDb;
 namespace SMS.BusinessLogicLayer.InfrastructureService.Service
 {
-    public class ContactService : IContactService
+    public class ContactService : IContactService 
     {
         private readonly IIUnitOfWorkDb _iunitOfWorkDb;
 

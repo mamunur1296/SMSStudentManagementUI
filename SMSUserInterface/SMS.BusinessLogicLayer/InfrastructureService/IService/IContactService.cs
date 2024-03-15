@@ -1,5 +1,4 @@
-﻿using SMS.BusinessLogicLayer.InfrastructureService.IGeneric;
-using SMS.BusinessObjectLayer.Models;
+﻿using SMS.BusinessObjectLayer.Models;
 
 
 namespace SMS.BusinessLogicLayer.InfrastructureService.IService

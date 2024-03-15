@@ -19,7 +19,7 @@ namespace SMS.BusinessLogicLayer.InfrastructureService.Service
 
         public Task CreateAsync(T model)
         {
-            throw new NotImplementedException();
+            _iunitOfWorkDb.ContactInfoDbRepo
         }
 
         public Task<IEnumerable<T>> GetAllAsync()
